@@ -1,0 +1,96 @@
+type: vertical-stack
+cards:
+  - type: custom:waterfall-history-card
+    entity: sensor.living_room_temperature
+    hours: 24
+    intervals: 48
+    columns: 12
+    compact: true
+    gradient: true
+    height: 60
+    show_current: true
+    show_labels: true
+    show_min_max: true
+    thresholds:
+      - value: 16
+        color: "#CEB2F5"
+      - value: 18
+        color: "#5EBDEE"
+      - value: 21
+        color: "#9cc8b8"
+      - value: 24
+        color: "#e7b562"
+      - value: 27
+        color: "#FF564B"
+      - value: 35
+        color: "#99332d"
+  - type: custom:stack-in-card
+    cards:
+      - type: grid
+        square: false
+        columns: 2
+        cards:
+          - type: custom:mushroom-template-card
+            entity: sensor.living_area_humidity
+            primary: |
+              {{ states(entity) | round(1) }} %
+            secondary: Humidity
+            icon: mdi:water-percent
+            name: Room Humidity
+            icon_color: |
+              {% set humidity = states('sensor.living_area_humidity') | float %}
+              {% if humidity < 31 %} #99332d          
+              {% elif humidity < 51 %} #228B22
+              {% else %} #99332d
+              {% endif %}      
+            card_mod:
+              style: |
+                ha-card {
+                    border: none;
+                  }
+          - type: custom:mushroom-template-card
+            entity: sensor.outdoor_humidity
+            primary: |
+              {{ states(entity) | round(1) }} %
+            secondary: Outdoor Humidity
+            icon: mdi:water-percent
+            name: Humidity
+            icon_color: grey
+            card_mod:
+              style: |
+                ha-card {
+                    border: none;
+                  }                 
+      - type: custom:mini-graph-card
+        entities:
+          - entity: sensor.outdoor_humidity
+            color: grey
+          - entity: sensor.living_area_humidity
+            show_fill: true
+            state_adaptive_color: true
+        color_thresholds:
+          - value: 0
+            color: "#99332d"
+          - value: 31
+            color: "#228B22"
+          - value: 51
+            color: "#99332d"
+        hours_to_show: 24
+        line_width: 3
+        font_size: 50
+        animate: true
+        show:
+          name: false
+          icon: false
+          state: false
+          legend: false
+          fill: fade
+        card_mod:
+          style: |
+            ha-card {
+                border: none;
+              }
+    card_mod:
+      style: |
+        ha-card {
+          --stack-card-gap: 0;

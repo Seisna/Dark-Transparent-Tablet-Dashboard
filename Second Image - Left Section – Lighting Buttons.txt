@@ -1,0 +1,222 @@
+type: horizontal-stack
+cards:
+  - type: conditional
+    conditions:
+      - condition: state
+        entity: light.lights_dt_only
+        state: "off"
+    card:
+      type: vertical-stack
+      cards:
+        - type: custom:button-card
+          entity: light.lights_dt_only
+          name: Dining Table
+          tap_action:
+            action: none
+          styles:
+            grid:
+              - grid-template-columns: 64px 1fr
+              - grid-template-areas: "\" i n \""
+            card:
+              - background: rgba(26, 27, 33, 0.5)
+              - height: 75px
+              - position: absolute
+              - z-index: 1
+            img_cell:
+              - width: 22px
+            icon:
+              - width: 22px
+              - color: "#ffffff"
+            name:
+              - justify-self: start
+              - font-size: 14px
+              - font-weight: 400
+              - color: "#ffffff"
+        - type: custom:my-slider-v2
+          entity: light.lights_dt_only
+          allowTapping: false
+          allowSliding: true
+          styles:
+            container:
+              - border-radius: 30px
+            card:
+              - margin-top: "-8px"
+              - height: 75px
+            progress:
+              - background: none
+            thumb:
+              - width: 3px
+              - height: 30%
+              - background: "#ffffff"
+              - border-radius: 5px
+              - top: 35%
+              - margin-right: 12x
+            track:
+              - background: none
+  - type: conditional
+    conditions:
+      - condition: state
+        entity: light.lights_dt_only
+        state: "on"
+    card:
+      type: vertical-stack
+      cards:
+        - type: custom:button-card
+          entity: light.lights_dt_only
+          name: Dining Table
+          tap_action:
+            action: none
+          styles:
+            grid:
+              - grid-template-columns: 64px 1fr
+              - grid-template-areas: "\" i n \""
+            card:
+              - background: none
+              - height: 75px
+              - position: absolute
+              - z-index: 1
+            img_cell:
+              - width: 22px
+            icon:
+              - width: 22px
+              - color: "#ffffff"
+            name:
+              - justify-self: start
+              - font-size: 14px
+              - font-weight: 400
+              - color: "#ffffff"
+        - type: custom:my-slider-v2
+          entity: light.lights_dt_only
+          allowTapping: false
+          allowSliding: true
+          styles:
+            container:
+              - border-radius: 30px
+            card:
+              - margin-top: "-8px"
+              - height: 75px
+            progress:
+              - background: >-
+                  linear-gradient(145deg, rgba(164,164,164,1) 0%,
+                  rgba(255,215,86,1) 100%
+            thumb:
+              - width: 3px
+              - height: 30%
+              - background: "#ffffff"
+              - border-radius: 5px
+              - top: 35%
+              - margin-right: 12x
+            track:
+              - background: >-
+                  linear-gradient(145deg, rgba(0,0,0,1) 0%, rgba(255,232,157,1)
+                  100%)
+  - type: conditional
+    conditions:
+      - condition: state
+        entity: light.lights_ktc
+        state: "off"
+    card:
+      type: vertical-stack
+      cards:
+        - type: custom:button-card
+          entity: light.lights_ktc
+          name: Kitchen
+          tap_action:
+            action: none
+          styles:
+            grid:
+              - grid-template-columns: 64px 1fr
+              - grid-template-areas: "\" i n \""
+            card:
+              - background: rgba(26, 27, 33, 0.5)
+              - height: 75px
+              - position: absolute
+              - z-index: 1
+            img_cell:
+              - width: 22px
+            icon:
+              - width: 22px
+              - color: "#ffffff"
+            name:
+              - justify-self: start
+              - font-size: 14px
+              - font-weight: 400
+              - color: "#ffffff"
+        - type: custom:my-slider-v2
+          entity: light.lights_la
+          allowTapping: false
+          allowSliding: true
+          styles:
+            container:
+              - border-radius: 30px
+            card:
+              - margin-top: "-8px"
+              - height: 75px
+            progress:
+              - background: none
+            thumb:
+              - width: 3px
+              - height: 30%
+              - background: "#ffffff"
+              - border-radius: 5px
+              - top: 35%
+              - margin-right: 12x
+            track:
+              - background: none
+  - type: conditional
+    conditions:
+      - condition: state
+        entity: light.lights_ktc
+        state: "on"
+    card:
+      type: vertical-stack
+      cards:
+        - type: custom:button-card
+          entity: light.lights_ktc
+          name: Kitchen
+          tap_action:
+            action: none
+          styles:
+            grid:
+              - grid-template-columns: 64px 1fr
+              - grid-template-areas: "\" i n \""
+            card:
+              - background: none
+              - height: 75px
+              - position: absolute
+              - z-index: 1
+            img_cell:
+              - width: 22px
+            icon:
+              - width: 22px
+              - color: "#ffffff"
+            name:
+              - justify-self: start
+              - font-size: 14px
+              - font-weight: 400
+              - color: "#ffffff"
+        - type: custom:my-slider-v2
+          entity: light.lights_ktc
+          allowTapping: false
+          allowSliding: true
+          styles:
+            container:
+              - border-radius: 30px
+            card:
+              - margin-top: "-8px"
+              - height: 75px
+            progress:
+              - background: >-
+                  linear-gradient(145deg, rgba(164,164,164,1) 0%,
+                  rgba(255,215,86,1) 100%
+            thumb:
+              - width: 3px
+              - height: 30%
+              - background: "#ffffff"
+              - border-radius: 5px
+              - top: 35%
+              - margin-right: 12x
+            track:
+              - background: >-
+                  linear-gradient(145deg, rgba(0,0,0,1) 0%, rgba(255,232,157,1)
+                  100%)
