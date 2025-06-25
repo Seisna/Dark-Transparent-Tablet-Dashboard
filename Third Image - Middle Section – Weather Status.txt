@@ -1,0 +1,7 @@
+type: markdown
+content: |
+
+  {{ states('sensor.home_weather_description') }}
+
+  **Pollen Status**
+  {{ states('sensor.home_pollen_type') }}

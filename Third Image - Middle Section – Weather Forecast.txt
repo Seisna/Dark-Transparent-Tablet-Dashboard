@@ -1,0 +1,7 @@
+show_current: false
+show_forecast: true
+type: weather-forecast
+entity: weather.met_service_home_forecast
+forecast_type: daily
+forecast_slots: 5
+theme: Material You No Mod Dark

@@ -1,0 +1,68 @@
+type: horizontal-stack
+cards:
+  - type: grid
+    columns: 3
+    square: false
+    cards:
+      - type: conditional
+        conditions:
+          - condition: or
+            conditions:
+              - entity: timer.wash_cuddly
+                state: idle
+              - entity: binary_sensor.timer_wash_cuddly_12h
+                state: "on"
+        card:
+          type: custom:timer-bar-card
+          entity: timer.wash_cuddly
+          invert: true
+          bar_direction: rtl
+          bar_width: 60%
+          mushroom:
+            layout: vertical
+            color: "#f385bc"
+      - type: conditional
+        conditions:
+          - condition: or
+            conditions:
+              - entity: timer.wash_duvet
+                state: idle
+              - entity: binary_sensor.timer_wash_duvet_12h
+                state: "on"
+        card:
+          type: custom:timer-bar-card
+          entity: timer.wash_duvet
+          invert: true
+          bar_direction: rtl
+          bar_width: 60%
+          mushroom:
+            layout: vertical
+            color: "#f3c843"
+      - type: conditional
+        conditions:
+          - condition: state
+            entity: timer.heated_towel_rails
+            state: active
+        card:
+          type: custom:timer-bar-card
+          entity: timer.heated_towel_rails
+          invert: true
+          bar_direction: rtl
+          bar_width: 60%
+          mushroom:
+            layout: vertical
+            color: orange
+      - type: conditional
+        conditions:
+          - condition: state
+            entity: timer.exhaust_fans
+            state: active
+        card:
+          type: custom:timer-bar-card
+          entity: timer.exhaust_fans
+          invert: true
+          bar_direction: rtl
+          bar_width: 60%
+          mushroom:
+            layout: vertical
+            color: "#b5e0f7"

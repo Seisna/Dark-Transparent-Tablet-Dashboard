@@ -1,0 +1,27 @@
+type: conditional
+conditions:
+  - condition: state
+    entity: sensor.home_metservice_weather_warnings
+    state_not: unknown
+card:
+  type: vertical-stack
+  cards:
+    - type: custom:mushroom-title-card
+      title: Weather Warning
+      card_mod:
+        style: |
+          ha-card {
+            --title-font-size: 20px !important;
+          }
+    - type: markdown
+      content: >-
+
+        {{ state_attr('sensor.home_metservice_weather_warnings', 'warnings') |
+        default('No warnings') }}
+
+
+
+        _Issued: {{
+        states.sensor.home_metservice_weather_warnings.last_changed.strftime('%I:%M%p
+        %A, %d %b') }}_
+      text_only: true
