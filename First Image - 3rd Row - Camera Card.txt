@@ -1,0 +1,9 @@
+type: custom:webrtc-camera
+entity: camera.right_driveway_camera_fluent
+style: |
+  ha-card {
+    width: 340px !important;
+  }
+mode: webrtc
+view_layout:
+  grid-area: left5

@@ -1,0 +1,9 @@
+type: custom:mushroom-title-card
+title: Driveway
+card_mod:
+  style: |
+    ha-card {
+      --title-font-size: 20px !important;
+    }
+view_layout:
+  grid-area: title5
