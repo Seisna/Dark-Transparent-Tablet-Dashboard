@@ -1,0 +1,248 @@
+type: vertical-stack
+cards:
+  - type: custom:mushroom-title-card
+    title: |-
+      {% set time = now().hour %} {% if time >= 18 %}
+        Good Evening!
+      {% elif time >= 12 %}
+        Good Afternoon!
+      {% elif time >= 5 %}
+        Good Morning!
+      {% else %}
+        Welcome!
+      {% endif %}
+    alignment: start
+    subtitle: |
+      {{ now().strftime('%a %b %-d, %-I:%M %p') }}
+  - type: custom:paper-buttons-row
+    styles:
+      justify-content: flex-start
+      flex-wrap: wrap
+      font-size: 1em
+      line-height: 1.2em
+      margin: 6px 0 12px 0
+      width: 100%
+    buttons:
+      - layout: name
+        name: It is
+        styles:
+          button:
+            flex-basis: 1
+            flex-shrink: 0
+          name:
+            color: "#FFFFFF"
+      - layout: name|icon
+        entity: weather.met_service_home_forecast
+        name: >-
+          {% set forecast = state_attr('weather.met_service_home_forecast',
+          'forecast_hourly') %} {% if forecast %}
+            {{ forecast[0].temperature }}°, {{ states('weather.met_service_home_forecast') }}
+          {% else %}
+            Unknown
+          {% endif %}
+        tap_action:
+          action: navigate
+          navigation_path: /tablet-dark/notifications
+        icon: "{{ states('sensor.weather_condition_icon') }}"
+        styles:
+          icon:
+            color: "#000000"
+          name:
+            color: "#000000"
+          button:
+            padding: 2px 8px
+            background-color: "#F5F5F5"
+            border-radius: 24px
+            flex-basis: 1
+            flex-shrink: 0
+            display: flex
+      - layout: name
+        name: outside, with a wind blowing at
+        styles:
+          button:
+            flex-basis: 1
+            flex-shrink: 0
+          name:
+            color: "#FFFFFF"
+      - layout: name
+        entity: weather.met_service_home_forecast
+        name: >-
+          {{ state_attr('weather.met_service_home_forecast',
+          'forecast_hourly')[0].wind_speed }} km/h
+        tap_action:
+          action: navigate
+          navigation_path: /tablet-dark/notifications
+        styles:
+          name:
+            color: "#000000"
+          button:
+            padding: 2px 8px
+            background-color: "#F5F5F5"
+            border-radius: 24px
+            flex-basis: 1
+            flex-shrink: 0
+            display: flex
+      - layout: name
+        name: Expect high of
+        styles:
+          button:
+            flex-basis: 1
+            flex-shrink: 0
+          name:
+            color: "#FFFFFF"
+      - layout: name
+        entity: weather.met_service_home_forecast
+        name: >-
+          {% set forecast = state_attr('weather.met_service_home_forecast',
+          'forecast_daily') %} {% if forecast %}
+            {{ forecast[0].temperature }} °🔺
+          {% else %}
+            N/A °🔺
+          {% endif %}
+        tap_action:
+          action: navigate
+          navigation_path: /tablet-dark/notifications
+        styles:
+          name:
+            color: "#000000"
+          button:
+            padding: 2px 8px
+            background-color: "#F5F5F5"
+            border-radius: 24px
+            flex-basis: 1
+            flex-shrink: 0
+            display: flex
+      - layout: name
+        name: and low of
+        styles:
+          button:
+            flex-basis: 1
+            flex-shrink: 0
+          name:
+            color: "#FFFFFF"
+      - layout: name
+        entity: weather.met_service_home_forecast
+        name: >-
+          {% set forecast = state_attr('weather.met_service_home_forecast',
+          'forecast_daily') %} {% if forecast %}
+            {{ forecast[0].templow }} °🔻
+          {% else %}
+            N/A °🔻
+          {% endif %}
+        tap_action:
+          action: navigate
+          navigation_path: /tablet-dark/notifications
+        styles:
+          name:
+            color: "#000000"
+          button:
+            padding: 2px 8px
+            background-color: "#F5F5F5"
+            border-radius: 24px
+            flex-basis: 1
+            flex-shrink: 0
+            display: flex
+      - layout: name
+        name: today.
+        styles:
+          button:
+            flex-basis: 1
+            flex-shrink: 0
+          name:
+            color: "#FFFFFF"
+  - type: custom:mushroom-template-card
+    layout: horizontal
+    tap_action:
+      action: none
+    hold_action:
+      action: none
+    double_tap_action:
+      action: none
+    primary: Room Occupancy
+    card_mod:
+      style: |
+        ha-card {
+          background: transparent !important;
+          box-shadow: none !important;
+        }
+        .card-content {
+          background: transparent !important;
+        }
+  - type: custom:mushroom-chips-card
+    chips:
+      - type: template
+        entity: input_boolean.baby_room_occupancy
+        icon: mdi:baby-carriage
+        icon_color: |-
+          {% if is_state(entity, 'on') %} 
+            #f385bc
+          {% else %}
+           grey
+          {% endif %}
+        tap_action:
+          action: toggle
+        content: |-
+          {% if is_state(entity, 'on') %} 
+            Baby
+          {% else %}
+          {% endif %}
+      - type: template
+        entity: input_boolean.master_bedroom_occupancy
+        icon: mdi:bed-king
+        icon_color: |-
+          {% if is_state(entity, 'on') %} 
+            #89CFF0
+          {% else %}
+           grey
+          {% endif %}
+        tap_action:
+          action: toggle
+        content: |-
+          {% if is_state(entity, 'on') %} 
+            Master
+          {% else %}
+          {% endif %}            
+      - type: template
+        entity: input_boolean.single_guest_room_occupancy
+        icon: mdi:account-plus
+        icon_color: |-
+          {% if is_state(entity, 'on') %} 
+            #FFA500
+          {% else %}
+           grey
+          {% endif %}
+        tap_action:
+          action: toggle
+        content: |-
+          {% if is_state(entity, 'on') %} 
+            Single
+          {% else %}
+          {% endif %}     
+      - type: template
+        entity: input_boolean.multiple_guest_room_occupancy
+        icon: mdi:account-group
+        icon_color: |-
+          {% if is_state(entity, 'on') %} 
+            #A52A2A
+          {% else %}
+           grey
+          {% endif %}
+        tap_action:
+          action: toggle
+        content: |-
+          {% if is_state(entity, 'on') %} 
+            Multiple
+          {% else %}
+          {% endif %}       
+    alignment: start
+    card_mod:
+      style: |
+        ha-card {
+          background: transparent !important;
+          box-shadow: none !important;
+        }
+        .chip-container {
+          background: transparent !important;
+        }
+view_layout:
+  grid-area: title1
