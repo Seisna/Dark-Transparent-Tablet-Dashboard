@@ -1,0 +1,9 @@
+grid-template-columns: 25% 25% 25% 25%
+grid-template-rows: auto\
+grid-template-areas: |
+  "title1 title2 title3 title4"
+  "title1 title2 title3 title4"
+  "title11 title22 title33 title4"    
+  "left3 left4 middle3 title4"
+  "title5 title6 title7 title8"  
+  "left5 left6 middle4 right3"
