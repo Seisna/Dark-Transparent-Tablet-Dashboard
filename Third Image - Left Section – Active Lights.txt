@@ -1,0 +1,35 @@
+type: vertical-stack
+cards:
+  - type: conditional
+    conditions:
+      - condition: state
+        entity: light.all_lights
+        state: "on"
+    card:
+      type: custom:mushroom-title-card
+      title: Lights
+      card_mod:
+        style: |
+          ha-card {
+            --title-font-size: 18px !important;
+          }
+  - type: custom:auto-entities
+    card:
+      square: false
+      type: grid
+      columns: 2
+    card_param: cards
+    filter:
+      include:
+        - group: light.all_lights
+          state: "on"
+          options:
+            type: custom:mushroom-light-card
+            use_light_color: true
+            show_brightness_control: true
+            show_color_control: true
+            layout: vertical
+      exclude: []
+    show_empty: false
+    sort:
+      method: entity_id
