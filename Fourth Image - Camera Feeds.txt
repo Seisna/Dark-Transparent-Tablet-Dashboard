@@ -1,0 +1,78 @@
+type: vertical-stack
+cards:
+  - type: custom:mushroom-title-card
+    title: Driveaway
+    card_mod:
+      style: |
+        ha-card {
+          --title-font-size: 20px !important;
+        }
+  - type: vertical-stack
+    cards:
+      - type: custom:webrtc-camera
+        entity: camera.left_driveway_camera_fluent
+        mode: webrtc
+      - type: custom:mushroom-chips-card
+        alignment: start
+        chips:
+          - type: template
+            entity: switch.light_switch_drw
+            icon: mdi:light-recessed
+            icon_color: |-
+              {% if is_state(entity, 'on') %} 
+                #c2b280
+              {% else %}
+               grey
+              {% endif %}
+            tap_action:
+              action: toggle
+            content: Driveway Light
+  - type: custom:button-card
+    show_name: false
+    show_icon: false
+    tap_action:
+      action: none
+    styles:
+      card:
+        - background: none
+        - box-shadow: none
+        - height: 50px
+  - type: custom:mushroom-title-card
+    title: Left Walkway
+    card_mod:
+      style: |
+        ha-card {
+          --title-font-size: 20px !important;
+        }
+  - type: vertical-stack
+    cards:
+      - type: custom:webrtc-camera
+        entity: camera.left_walkway_camera_fluent
+        mode: webrtc
+      - type: custom:mushroom-chips-card
+        alignment: start
+        chips:
+          - type: template
+            entity: switch.outdoor_light_switch_lr
+            icon: mdi:washing-machine
+            icon_color: |-
+              {% if is_state(entity, 'on') %} 
+                #c2b280
+              {% else %}
+               grey
+              {% endif %}
+            tap_action:
+              action: toggle
+            content: Outdoor Laundry Light
+          - type: template
+            entity: switch.rear_light_switch_grg
+            icon: mdi:garage-variant
+            icon_color: |-
+              {% if is_state(entity, 'on') %} 
+                #c2b280
+              {% else %}
+               grey
+              {% endif %}
+            tap_action:
+              action: toggle
+            content: Rear Garage Light
