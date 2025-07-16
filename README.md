@@ -169,8 +169,8 @@ When triggered, it:
 - Plays an alarm siren sound through 8x Google Nest Minis in sync
 
 Extra credits:
-[Custom weather buttons, Light Slider Cards](https://www.youtube.com/@My_Smart_Home)
-[Windy iFrame](https://www.reddit.com/r/homeassistant/comments/1l4hnx7/weather_dashboard_v100/)
+- [Custom weather buttons, Light Slider Cards](https://www.youtube.com/@My_Smart_Home)
+- [Windy iFrame](https://www.reddit.com/r/homeassistant/comments/1l4hnx7/weather_dashboard_v100/)
 
 # Sponsor ❤️
 [<img width="170" height="37" alt="Buy me a coffee" src="https://github.com/user-attachments/assets/2bc7c798-1015-4293-b674-6680d8413a9c" />](https://buymeacoffee.com/reynaldisuu)
